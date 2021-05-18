@@ -61,6 +61,38 @@ public class NhanVienBus {
         return danhSachNhanVienTimDuoc;
     }
     
+    public ArrayList<NhanVienDTO>timNhanVienTheoSDT(String sdt){
+        ArrayList<NhanVienDTO> danhSachNhanVienTimDuoc = new ArrayList<>();
+        for(NhanVienDTO nv : dsnv){
+            if(nv.getDienThoai().contains(sdt)){
+                danhSachNhanVienTimDuoc.add(nv);
+            }
+        }
+        return danhSachNhanVienTimDuoc;
+    }
+    
+   public ArrayList<NhanVienDTO>timNhanVienTheoChucVu(String chucvu){
+        ChucVuBUS chucVuBUS = new ChucVuBUS();
+        ArrayList<NhanVienDTO> danhSachNhanVienTimDuoc = new ArrayList<>();
+        for(NhanVienDTO nv : dsnv){
+            if(chucVuBUS.getNameByID(nv.getMaCV()).contains(chucvu)){
+                danhSachNhanVienTimDuoc.add(nv);
+            }
+        }
+        return danhSachNhanVienTimDuoc;
+    }
+   
+    public ArrayList<NhanVienDTO>timNhanVienTheoTaiKhoan(String taikhoan){
+        TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
+        ArrayList<NhanVienDTO> danhSachNhanVienTimDuoc = new ArrayList<>();
+        for(NhanVienDTO nv : dsnv){
+            if(taiKhoanBUS.getNameByID(nv.getMaCV()).contains(taikhoan)){
+                danhSachNhanVienTimDuoc.add(nv);
+            }
+        }
+        return danhSachNhanVienTimDuoc;
+    }
+    
     public void delNV(int MaNV){
         nhanvienDAO.delnv(MaNV);
         dsnv = null;
