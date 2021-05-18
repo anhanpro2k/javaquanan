@@ -85,13 +85,13 @@ public class AppBUS {
 
     public ArrayList<AppDTO> searchByPhiHoaHong(String phiHoaHong) {
         ArrayList<AppDTO> listSearch = new ArrayList<AppDTO>();
-        for (AppDTO app : danhSachApp) {
-            if (app.getPhiHoaHong() == Integer.parseInt(phiHoaHong)) {
-
-                listSearch.add(app);
-            }
+        for(AppDTO app : danhSachApp){
+           if(Integer.toString(app.getPhiHoaHong()).contains(phiHoaHong)){
+               listSearch.add(app);
+           } 
         }
 
         return listSearch;
     }
 }
+    
