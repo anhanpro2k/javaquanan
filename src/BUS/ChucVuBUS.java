@@ -20,13 +20,25 @@ public class ChucVuBUS {
 
     public ChucVuBUS() {
         chucVuDAO = new ChucVuDAO();
-        danhSachChucVu = getDanhSachChucVu();
+        getDanhSachChucVu();
     }
 
-    public ArrayList<ChucVuDTO> getDanhSachChucVu() {
-        return chucVuDAO.getDanhSachChucVu();
+    public void getDanhSachChucVu() {
+        if(danhSachChucVu == null){
+            danhSachChucVu = chucVuDAO.getDanhSachChucVu();
+        }
     }
-
+    
+    
+    public String getNameByID(int id){
+        for(ChucVuDTO chucvu : danhSachChucVu){
+            if(id == chucvu.getMaChucVu()){
+                return chucvu.getTenChucVu();
+            }
+        }
+        return "";
+    }
+    
     public ChucVuDTO getChucVuByMaChucVu(int maChucVu) {
         for (ChucVuDTO chucVu : danhSachChucVu) {
             if (chucVu.getMaChucVu() == maChucVu) {
